@@ -17,7 +17,7 @@
  *
  */
 
-#include "../../SyntopiaCore/Misc/Misc.h"
+#include "SyntopiaCore/Misc/Misc.h"
 #include "MainWindow.h"
 #include "TimeLine.h"
 #include <QDir>

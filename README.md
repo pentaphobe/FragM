@@ -70,6 +70,30 @@ The above will install in /home/username/Fragmentarium folder with includes and 
 
 To install for all users change -DCMAKE_INSTALL_PREFIX=~/ to -DCMAKE_INSTALL_PREFIX=/usr/local and use sudo make install
 
+# Building for MacOS
+
+These steps need refinement, just first steps for now since I got it to actually build and run.  (Whether it works or not is an entirely different question)
+
+- Install QT
+  ```bash
+  brew install qt
+  ```
+- Clone glm (currently being cloned to same _parent_ dir as FragM)
+  ```bash
+  pushd ..
+  git clone https://github.com/g-truc/glm.git
+  popd
+  ```
+- Generate XCode project file
+  ```bash
+  cd Fragmentarium-Source
+  qmake -spec macx-xcode Fragmentarium-Source.pro
+  qmake -project -after "QT += widgets opengl xml script scripttools" -after "INCLUDEPATH += '../../glm'"
+  ```
+- Open up Xcode and compile
+  ```bash
+  open Fragmentarium-Source.xcodeproj
+  ```
 
 # Pre-built packages
 You can find pre-built packages for Ubuntu 16.0.4 Xenial (deb), SuSE Leap 15.0 (rpm), Windows (7z) at https://github.com/3Dickulus/FragM/releases/
